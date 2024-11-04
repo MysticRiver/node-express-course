@@ -1,5 +1,5 @@
-const joe = 'joe'
-const pedro = 'pedro'
+const fname = 'tarik'
+const lname = 'carey'
 
-module.exports = { joe, pedro }
+module.exports = { fname, lname }
 console.log(module)
