@@ -1,4 +1,5 @@
 const { writeFile } = require("fs");
+
 console.log("at start");
 writeFile("./temporary/output.txt", "This is the first line \n", (err) => {
     if (err) throw err;
@@ -12,6 +13,7 @@ writeFile("./temporary/output.txt", "This is the first line \n", (err) => {
     writeFile("./temporary/output.txt", "This is the third line \n", {flag: 'a'}, (err) => {
         if (err) throw err;
         console.log("Third Line written");
+        
     });
+    
 });
-console.log("at end");
