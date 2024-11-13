@@ -4,7 +4,8 @@
   "description": "",
   "main": "1-intro.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "15-create-big-file": "node 15-create-big-file.js"
   },
   "keywords": [],
   "author": "",
