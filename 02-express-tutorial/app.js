@@ -1,12 +1,33 @@
 // 1. Import express module
 const express = require('express')
-const { products } = require("./data");
+
 
 // 2. Create the express app
 const app = express()
 
 // 3. Middleware
 app.use(express.static('./public'))
+
+// Import both products and people from data.js
+const { products, people } = require('./data')
+
+// Static files middleware - add this line
+app.use(express.static('./methods-public'))
+
+// json parser for API
+app.use(express.json())
+
+//created a middleware function called logger in app.js
+const logger = (req, res, next) => {
+  const time = new Date().toLocaleString()
+  console.log(`${req.method} ${req.url} ${time}`)
+  next()
+}
+
+app.get('/', logger, (req, res) => {
+  res.send('Home Page')
+})
+
 
 // 4. Routes
 app.get('/api/v1/test', (req, res) => {
@@ -23,6 +44,25 @@ app.get('/api/v1/products/:productID', (req, res) => {
     }
     res.json(product)
 })
+
+// GET /api/v1/people - return all people
+app.get('/api/v1/people', (req, res) => {
+    res.json(people)
+  })
+
+// add middleware to parse this body into a Javascript object. 
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+  
+// POST /api/v1/people - add a new person
+  app.post('/api/v1/people', (req, res) => {//check req.body to see if there is a req.body.name property. If not, it should return JSON for an error.
+    const { name } = req.body
+    if (!name) {
+      return res.status(400).json({ success: false, message: 'Please provide a name' })
+    }
+    people.push({ id: people.length + 1, name: req.body.name });
+    res.status(201).json({ success: true, name: req.body.name });
+  })
 
 // Route handler for /api/v1/query with search, regex and price filtering
 app.get('/api/v1/query', (req, res) => {
