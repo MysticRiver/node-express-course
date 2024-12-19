@@ -127,6 +127,7 @@ object.behavior()
 // challenges are:
 //
 // - Create a new array with only each person's last name
+
 // - Filter names that don't match the format "<first> <last>"
 //   - Should remove Tam because she has a double-space
 //   - Should remove Carlow because he has a middle-name
