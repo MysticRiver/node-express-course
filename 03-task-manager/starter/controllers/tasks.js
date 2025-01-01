@@ -1,4 +1,3 @@
-import * as next from 'next'
 const Task = require('../models/Task')
 const asyncWrapper = require('../middleware/async')
 const {createCustomError} = require('../errors/custom-error') 
