@@ -16,7 +16,7 @@ app.use(errorHandlerMiddleware)
 //routes
 app.use('/api/v1/tasks', tasks)
 
-//app.get('/api/v1/tasks')                - get all the tasks
+//app.get('/api/v1/tasks')               
 //app.post('/api/v1/tasks')               - create a new tasks
 //app.get('/api/v1/tasks/:id')            - get a single task
 //app.patch('/api/v1/tasks/:id')                - get all the tasks
