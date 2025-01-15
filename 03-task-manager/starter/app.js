@@ -9,8 +9,10 @@ const errorHandlerMiddleware = require('./middleware/error-handler')
 //middleware
 app.use(express.static('./public'))
 app.use(express.json())
-app.use(notFound)
+app.use('/api/v1/tasks', tasks)      // Routes placed before error handling
+app.use(notFound)                    // Error handling middleware placed after routes
 app.use(errorHandlerMiddleware)
+
 
 
 //routes
@@ -25,7 +27,7 @@ app.use('/api/v1/tasks', tasks)
 
 
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3023;
 
 const start = async () => {
   try {
